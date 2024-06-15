@@ -1,0 +1,143 @@
+body{
+  background-color: rgb(0, 0, 72);
+  
+  background-size: contain;
+  background-size: 1440px 850px;
+  background-repeat: no-repeat;
+}
+.card{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(2,0,36);
+background-image: linear-gradient(to right, #8360c3, #2ebf91);
+  width: 90%;
+  max-width: 470px;
+  margin: 100px auto 0;
+  padding: 40px 35px;
+  text-align: center;
+  flex-direction: column;
+  border-radius: 20px;
+
+}
+.lat,
+.long{
+  height: 30px;
+  width: 200px;
+  border-radius: 20px;
+  font-size: 18px;
+  border-color: black;
+  border-style: solid;
+  padding-left: 10px;
+}
+.long{
+  margin-left: 10px;
+}
+
+.image1{
+  height: 15px;
+  width: 15px;
+  
+  border-radius: 50%;
+}
+.search{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+.search button{
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin-left: 10px;
+  background-color: aliceblue;
+  border-color: black;
+  border-style: solid;
+  cursor: pointer;
+}
+.image2,
+.image3,
+.image4,
+.image5{
+  height: 110px;
+  margin-top: 60px;
+}
+.p1{
+  font-size: 50px;
+  font-weight: 15px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  margin-top: 0px;
+}
+.p2{
+  font-size: 20px;
+  margin-top: 0px;
+}
+.info{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-weight: 30px;
+}
+.windspeed{
+  margin-left: 150px;
+}
+.windicon{
+  height: 50px;
+}
+.drop{
+  height: 50px;
+}
+.p3{
+  margin-top: 1px;
+}
+.p2{
+  margin-bottom: 1px;
+}
+.p0{
+  margin-bottom: 10px;
+  font-size: 15px;
+
+}
+.p0{
+  margin-bottom: 0px;
+  font-weight: 10px;
+}
+*{
+  font-family: "Ubuntu";
+}
+.bottom{
+  background-color: white;
+  margin-top: 300px;
+  padding: 10px 10px;
+}
+.myphoto{
+  margin-left: 10px;
+  height: 130px;
+  width: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: right;
+}
+.bottom1{
+  display: flex;
+  flex-direction: row;
+}
+.insta{
+  height: 50px;
+}
+.linkedin{
+  margin-left: 30px;
+  height: 50px;
+}
+.github{
+  height: 50px;
+  margin-left: 10px;
+}
+.folow{
+  margin-left: 70px;
+}
+.credit{
+  margin-left: 50px;
+}

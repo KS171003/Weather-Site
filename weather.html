@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <title>Weather in your area</title>
+    <link rel="stylesheet" href="weather.css">
+  </head>
+  <body>
+    <div class="card">
+      <div class="search">
+        <p></p>
+        <input type="text" placeholder="Enter latitude" spellcheck="false" class="lat">
+        <input type="text" placeholder="Enter longitude" spellcheck="false" class="long">
+        <button><img src="search_icon_152764.png" class="image1"></button>
+      </div>
+      <div class="image">
+        <img src="/image/1530392_weather_sun_sunny_temperature_icon.png" class="image2">
+        <img src="/image/img1.png" alt="" class="image3">
+        <img src="/image/img2.png" alt="" class="image4">
+        <img src="/image/img3.png" alt="" class="image5">
+      </div>
+      <div class="temp">
+        <p class="p0"></p>
+        <p class="p1">22°C</p>
+        <p class="p2"></p>
+        <p class="p3"></p>
+      </div>
+      <div class="info">
+        <div class="humidity">
+          <img src="/image/2682807_drop_high_humidity_percentage_precipitation_icon.png" class="drop">
+          <div class="humper">
+            53%
+          </div>
+          <p>HUMIDITY</p>
+          </div>
+          <div class="windspeed">
+            <img src="/image/3741354_weather_wind_windy_icon.png" class="windicon">
+            <div class="wind">
+            5.66 Km/h
+            </div>
+          <p>WIND SPEED</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+    <div class="bottom1">
+      <div class="personalinfo">
+      <p><b>DEVELOPER:-</b></p>
+      <p>KUNAL SHARMA</p>
+      <p>First Year COE Student</p>
+      <p>Thapar Institute of Science and Technology</p>
+      </div>
+      <div class="photo">
+        <img src="PHOTO-2024-02-19-17-22-40.jpg" alt="" class="myphoto">
+      </div>
+      <div class="folow">
+        <p><b>follow me on :-</b></p>
+        <div class="sources">
+        <a href="https://www.instagram.com/kunal_10.03?igsh=NnRqcGxoeXZwMHJ1&utm_source=qr"><img src="/image/insta.png" alt="" class="insta"></a>
+        <a href="https://www.linkedin.com/in/kunal-sharma-9224a2300?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" ><img src="/image/LinkedIn_icon_circle.svg.webp" alt="" class="linkedin"></a>
+        <a href="https://github.com/Kunalkomal" ><img src="/image/GitHub-Symbol.png" alt="" class="github"></a>
+        </div>  
+      </div>
+      <div class="credit">
+        <p>API site credit:-</p>
+        <a href="https://open-meteo.com/">OPEN-METEO</a>
+        <br>
+        <p>Images Credit:-</p>
+        <a href="https://www.iconfinder.com/">ICONFINDER</a>
+
+      </div>
+    </div>
+    </div>
+
+
+    <script>
+      const api = "https://api.open-meteo.com/v1/forecast?&hourly=temperature_2m,relative_humidity_2m,rain,wind_speed_10m&forecast_days=16"
+      //const latitude= "52.52"
+      //const longitude= "13.41"
+      const searchboxlat = document.querySelector(".lat");
+      const searchboxlong = document.querySelector(".long");
+      const searchbtn = document.querySelector(".search button");
+      const weatherIcon = document.querySelector("image2") 
+
+
+      async function checkweather(latitude,longitude){
+         const response = await fetch(api + `&latitude=${latitude}` + `&longitude=${longitude}`);
+         //const response = await fetch("https://api.open-meteo.com/v1/forecast?&hourly=temperature_2m,relative_humidity_2m,rain,wind_speed_10m&forecast_days=16&latitude=52.52&longitude=13.41")
+         console.log(response);
+         var data = await response.json();
+         console.log(data);
+         document.querySelector(".lat").innerHTML = data.latitude;
+         document.querySelector(".long").innerHTML = data.longitude;
+         document.querySelector(".p1").innerHTML = data.hourly.temperature_2m[0] + "°C";
+         document.querySelector('.humper').innerHTML = data.hourly.relative_humidity_2m[0] + "%";
+         document.querySelector('.wind').innerHTML = data.hourly.wind_speed_10m[0] + " Km/h";
+         document.querySelector('.p2').innerHTML = data.timezone;
+         document.querySelector('.p3').innerHTML = data.hourly.time[0];
+         document.querySelector('.p0').innerHTML = "Rain " +data.hourly.rain[0] + " mm";
+
+         const temp = Number(data.hourly.temperature_2m[0]); 
+
+      /*if(temp>=35){
+          weatherIcon.src = "image/1530392_weather_sun_sunny_temperature_icon.png";
+      }
+      else if(temp >=25 && temp <=35){
+        weatherIcon.src = "image/cloud_cloudy_day_forecast_sun_icon.png";
+      }
+      else if(temp >=5 && temp <=25){
+        weatherIcon.src = "image/2682844_cloud_day_precipitation_rain_snow_icon.png";
+      }
+      else if(temp <=5){
+        weatherIcon.src = "image/2995006_snow_forecast_snowflake_weather_cold_icon.png";
+      }
+      */
+    
+    }
+      //checkweather(52.52,13.41);
+
+      searchbtn.addEventListener("click", ()=>{
+        checkweather(searchboxlat.value,searchboxlong.value);
+      })
+      
+    </script>
+  </body>
+</html>
